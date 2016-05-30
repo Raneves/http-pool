@@ -3,3 +3,8 @@
 /deps
 erl_crash.dump
 *.ez
+/target/
+.classpath
+.project
+*.DS_Store
+/settings/
