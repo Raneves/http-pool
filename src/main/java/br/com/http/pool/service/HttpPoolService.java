@@ -28,6 +28,8 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.ssl.SSLContexts;
 
+import br.com.http.pool.method.GetRequestMethod;
+
 /**
  *
  * May 31, 2016 Description of file HttpPoolService.java: manager the ConnectionManager object and requests.
@@ -51,10 +53,18 @@ public class HttpPoolService extends Thread {
 	 */
 	private static final int TIME_SLEEP_EXCEPTION = 10000;
 	
+	/**
+	 * User agent for all connections
+	 */
+	private static final String USER_AGENT = "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident/6.0)";
+	
 	private PoolingHttpClientConnectionManager connectionManager;
 	private CloseableHttpClient httpClient;
 	private String host;
+	private String url;
 	private int numberOfRequests;
+	private boolean logOption;
+	private RequestConfig defaultRequestConfig;
 	
 	/**
 	 * @param url
@@ -66,7 +76,9 @@ public class HttpPoolService extends Thread {
 	public HttpPoolService(String url, int numberOfRequests, boolean logOption)
 	{
 		host = url.replace("http://", "");
+		this.url = url;
 		this.numberOfRequests = numberOfRequests;
+		this.logOption = logOption;
 		
 		connectionManager = buildConnectionManager();
         httpClient = buildHttpClient();
@@ -107,7 +119,7 @@ public class HttpPoolService extends Thread {
         CookieStore cookieStore = new BasicCookieStore();
         
         // Create global request configuration
-        RequestConfig defaultRequestConfig = RequestConfig.custom()
+        defaultRequestConfig = RequestConfig.custom()
             .setCookieSpec(CookieSpecs.DEFAULT)
             .setExpectContinueEnabled(true)
             .setTargetPreferredAuthSchemes(Arrays.asList(AuthSchemes.NTLM, AuthSchemes.DIGEST))
@@ -116,6 +128,7 @@ public class HttpPoolService extends Thread {
 
         // Create an HttpClient with the given custom dependencies and configuration.
         CloseableHttpClient httpclient = HttpClients.custom()
+        	.setUserAgent(USER_AGENT)
             .setConnectionManager(connectionManager)
             .setDefaultCookieStore(cookieStore)
             .setDefaultRequestConfig(defaultRequestConfig)
@@ -241,13 +254,11 @@ public class HttpPoolService extends Thread {
 			{
 				for (int cont = 0; cont < numberOfRequests; cont++) 
 				{
-					// TODO implementation of request using manager and client
+					new GetRequestMethod(url, httpClient, defaultRequestConfig, logOption);
 				}
-				LOG.log(Level.INFO, "\n---------------Send GET-REQUEST " + numberOfRequests + "---------------\n");
-				// System.out.println("getAvailable: " + cm.getTotalStats().getAvailable() + "\nLeased: " + cm.getTotalStats().getLeased() + "\nPending: " + cm.getTotalStats().getPending() + "\nMax" +
-				// cm.getTotalStats().getMax());
+				
+				LOG.log(Level.INFO, "\n---------------Send REQUEST " + numberOfRequests + "---------------\n");
 				sleep(TIME_SLEEP);
-				renewManager();
 			}
 			catch (OutOfMemoryError m) 
 			{
