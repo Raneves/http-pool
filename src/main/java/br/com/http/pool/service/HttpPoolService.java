@@ -257,7 +257,8 @@ public class HttpPoolService extends Thread {
 					new GetRequestMethod(url, httpClient, defaultRequestConfig, logOption).start();
 				}
 				
-				LOG.log(Level.INFO, "\n---------------Send REQUEST " + numberOfRequests + "---------------\n");
+				//LOG.log(Level.INFO, "\n---------------Send REQUEST " + numberOfRequests + "---------------\n");
+				System.out.println("\n---------------Send REQUEST " + numberOfRequests + "---------------\n");
 				sleep(TIME_SLEEP);
 			}
 			catch (OutOfMemoryError m) 

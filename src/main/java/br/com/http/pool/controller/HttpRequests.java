@@ -1,6 +1,7 @@
 package br.com.http.pool.controller;
 
 import java.util.logging.Level;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
@@ -21,6 +22,12 @@ public class HttpRequests {
 	
 	public static void main(String... parameters)
 	{
+		
+		//only for travis
+		LogManager.getLogManager().reset();
+		Logger globalLogger = Logger.getLogger(java.util.logging.Logger.GLOBAL_LOGGER_NAME);
+		globalLogger.setLevel(java.util.logging.Level.OFF);
+		//-- end --//
 		validateParameters(parameters);
 		LOG.log(Level.INFO, "requested url: " + parameters[0]);
 		String url = parameters[0];
