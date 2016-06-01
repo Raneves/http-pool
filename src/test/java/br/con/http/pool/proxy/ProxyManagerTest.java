@@ -12,6 +12,12 @@ import org.junit.Test;
 
 import br.com.http.pool.proxy.ProxyManager;
 
+/**
+ *
+ * Jun 1, 2016
+ * Description of file ProxyManagerTest: 
+ * @author rjesus
+ */
 public class ProxyManagerTest {
 
 	private static Logger LOG = Logger.getLogger(ProxyManagerTest.class.getName());
@@ -26,6 +32,11 @@ public class ProxyManagerTest {
 	{
 	}
 
+	/**
+	 * Test proxies and load files
+	 * Jun 1, 2016
+	 * @author rjesus
+	 */
 	@Test
 	public void test()
 	{
