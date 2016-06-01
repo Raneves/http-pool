@@ -254,7 +254,7 @@ public class HttpPoolService extends Thread {
 			{
 				for (int cont = 0; cont < numberOfRequests; cont++) 
 				{
-					new GetRequestMethod(url, httpClient, defaultRequestConfig, logOption);
+					new GetRequestMethod(url, httpClient, defaultRequestConfig, logOption).start();
 				}
 				
 				LOG.log(Level.INFO, "\n---------------Send REQUEST " + numberOfRequests + "---------------\n");
