@@ -57,6 +57,12 @@ public final class ProxyManager {
 		return proxies;
 	}
 
+	/**
+	 *
+	 * @return
+	 * Jun 1, 2016
+	 * @author rjesus
+	 */
 	public static Set<HttpHost> reload()
 	{
 		Set<HttpHost> proxies = new HashSet<HttpHost>();
