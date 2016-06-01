@@ -45,7 +45,7 @@ public class HttpRequestsTest {
 	{
 		try {
 			HttpRequests.main(url, sizeOfPool, logOption);
-			Thread.sleep(7200000);//two hours
+			Thread.sleep(21600000);//six hours
 		} catch (Throwable t) {
 			t.printStackTrace();
 			fail("Error when try call main method: " + t.getMessage());
