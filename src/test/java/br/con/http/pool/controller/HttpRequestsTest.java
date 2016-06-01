@@ -25,7 +25,7 @@ public class HttpRequestsTest {
 	@Before
 	public void setUp() throws Exception
 	{
-		url = "https://google.com";
+		url = "http://l2draco.net";
 		sizeOfPool = "250";
 		logOption = "true";
 	}
@@ -45,7 +45,7 @@ public class HttpRequestsTest {
 	{
 		try {
 			HttpRequests.main(url, sizeOfPool, logOption);
-			Thread.sleep(60000);//one minute
+			Thread.sleep(120000);//one minute
 		} catch (Throwable t) {
 			t.printStackTrace();
 			fail("Error when try call main method: " + t.getMessage());
