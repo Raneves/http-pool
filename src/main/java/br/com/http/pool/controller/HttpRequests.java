@@ -3,6 +3,12 @@ package br.com.http.pool.controller;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+
+import br.com.http.pool.proxy.IdleConnectionMonitorThread;
+import br.com.http.pool.proxy.ProxyReloader;
+import br.com.http.pool.service.HttpPoolService;
+
 /**
  *
  * May 30, 2016
@@ -12,11 +18,25 @@ import java.util.logging.Logger;
 public class HttpRequests {
 
 	private static Logger LOG = Logger.getLogger(HttpRequests.class.getName());
-
+	
 	public static void main(String... parameters)
 	{
 		validateParameters(parameters);
 		LOG.log(Level.INFO, "requested url: " + parameters[0]);
+		String url = parameters[0];
+		int numberOfRequests = Integer.parseInt(parameters[1]);
+		boolean logOption = new Boolean(parameters[2]);
+		
+		HttpPoolService service = new HttpPoolService(url, numberOfRequests, logOption);
+		PoolingHttpClientConnectionManager connectionManager = service.getConnectionManager(); 
+		ProxyReloader proxyReloader = new ProxyReloader();
+		IdleConnectionMonitorThread monitor = new IdleConnectionMonitorThread(connectionManager);
+		
+		service.start();
+		monitor.start();
+		proxyReloader.start();
+		
+		LOG.log(Level.INFO, "Starting HTTP-POOL");
 	}
 
 	/**
@@ -29,11 +49,11 @@ public class HttpRequests {
 	{
 		String msg;
 		String regexOfURL = "\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
-		String regexOfSizeOfPool = "[0-9]+";
+		String regexOfNumberOfRequests = "[0-9]+";
 		
 		if(parameters == null || parameters.length == 0)
 		{
-			msg = "Three parameters are required: [{URL}] [{SIZE_OF_POOL}] [{LOG_OPTION}]";
+			msg = "Three parameters are required: [{URL}] [{NUMBER_OF_REQUESTS}] [{LOG_OPTION}]";
 			LOG.log(Level.SEVERE, msg);
 			throw new RuntimeException(msg);	
 		}
@@ -49,9 +69,9 @@ public class HttpRequests {
 			throw new RuntimeException(msg);	
 		}
 		
-		if(sizeOfPool == null || !sizeOfPool.matches(regexOfSizeOfPool))
+		if(sizeOfPool == null || !sizeOfPool.matches(regexOfNumberOfRequests))
 		{
-			msg = "invalid size of pool: " + sizeOfPool;
+			msg = "invalid number of requests: " + sizeOfPool;
             LOG.log(Level.SEVERE, msg);
 			throw new RuntimeException(msg);
 		}

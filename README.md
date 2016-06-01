@@ -6,4 +6,4 @@ This project is destination to users that needing test multiple requests with mu
 
 ##### HOW TO USE
 Just put your proxy-file and start the application with follow command:
-`java -jar [{URL}] [{SIZE_OF_POOL}] [{LOG_OPTION}] http-pool.jar` and there is it.
+`java -jar [{URL}] [{NUMBER_OF_REQUESTS}] [{LOG_OPTION}] http-pool.jar` and there is it.
