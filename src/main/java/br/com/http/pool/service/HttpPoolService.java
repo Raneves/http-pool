@@ -75,7 +75,7 @@ public class HttpPoolService extends Thread {
 	 */
 	public HttpPoolService(String url, int numberOfRequests, boolean logOption)
 	{
-		host = url.replace("http://", "");
+		host = url.replace("http://", "").split("/")[0];
 		this.url = url;
 		this.numberOfRequests = numberOfRequests;
 		this.logOption = logOption;

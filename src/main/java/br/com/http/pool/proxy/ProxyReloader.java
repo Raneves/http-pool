@@ -22,7 +22,8 @@ public class ProxyReloader extends Thread {
 	
 	public void run() 
 	{
-		while(true){
+		while(true)
+		{
 			sleep(TIME_RELOAD);
 			setListProxy(reload());
 			//LOG.log(Level.INFO, "\n\n\n\n\n\n\nProxys Updated: "+ getListProxy().size() +"\n\n\n\n\n\n\n\n");
