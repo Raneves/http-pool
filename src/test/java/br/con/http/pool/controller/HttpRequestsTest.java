@@ -22,6 +22,12 @@ public class HttpRequestsTest {
 	private String sizeOfPool;
 	private String logOption;
 
+	/**
+	 *
+	 * @throws Exception
+	 * Jun 2, 2016
+	 * @author rjesus
+	 */
 	@Before
 	public void setUp() throws Exception
 	{
