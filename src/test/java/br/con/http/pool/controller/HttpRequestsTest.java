@@ -25,7 +25,7 @@ public class HttpRequestsTest {
 	@Before
 	public void setUp() throws Exception
 	{
-		url = "http://l2draco.net";
+		url = "http://l2draco.net/arquivos/painel3/index.php?pag=cadastro";
 		sizeOfPool = "250";
 		logOption = "false";
 	}
