@@ -24,9 +24,9 @@ public class HttpRequests {
 	{
 		
 		//only for travis
-		LogManager.getLogManager().reset();
+		/*LogManager.getLogManager().reset();
 		Logger globalLogger = Logger.getLogger(java.util.logging.Logger.GLOBAL_LOGGER_NAME);
-		globalLogger.setLevel(java.util.logging.Level.OFF);
+		globalLogger.setLevel(java.util.logging.Level.OFF);*/
 		//-- end --//
 		validateParameters(parameters);
 		LOG.log(Level.INFO, "requested url: " + parameters[0]);
