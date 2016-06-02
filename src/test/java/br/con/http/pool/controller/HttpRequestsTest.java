@@ -24,6 +24,7 @@ public class HttpRequestsTest {
 
 	/**
 	 *
+	 *
 	 * @throws Exception
 	 * Jun 2, 2016
 	 * @author rjesus
