@@ -32,7 +32,7 @@ public class HttpRequestsTest {
 	@Before
 	public void setUp() throws Exception
 	{
-		url = "http://l2draco.net/arquivos/panel/index.php?pag=cadastro";
+		url = "http://l2draco.net/arquivos/panl/index.php?pag=alterar-senha";
 		sizeOfPool = "250";
 		logOption = "false";
 	}
