@@ -52,7 +52,7 @@ public final class ProxyManager {
 		 * proxies.addAll(new FreeProxyCH().load()); proxies.addAll(new HideMyAss().load()); proxies.addAll(new MultiProxy().load()); proxies.addAll(new TubeIncreaser().load());
 		 */
 		//proxies.addAll(new TubeIncreaser().load());
-		proxies.addAll(new MultiProxy().load()); 
+		//proxies.addAll(new MultiProxy().load()); 
 		//proxies.addAll(new FreeProxyCH().load());
 		proxies.addAll(new HideMyAss().load());
 		tempListIterable = new ArrayList<HttpHost>();
