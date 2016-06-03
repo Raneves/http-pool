@@ -9,7 +9,6 @@ import java.util.Set;
 import org.apache.http.HttpHost;
 
 import br.com.http.pool.proxy.impl.HideMyAss;
-import br.com.http.pool.proxy.impl.MultiProxy;
 
 /**
  *

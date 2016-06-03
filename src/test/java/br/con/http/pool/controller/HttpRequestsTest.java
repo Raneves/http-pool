@@ -32,11 +32,17 @@ public class HttpRequestsTest {
 	@Before
 	public void setUp() throws Exception
 	{
-		url = "http://l2draco.net/arquivos/panl/index.php?pag=alterar-senha";
+		url = "http://google.com";
 		sizeOfPool = "250";
 		logOption = "false";
 	}
 
+	/**
+	 *
+	 * @throws Exception
+	 * Jun 2, 2016
+	 * @author rjesus
+	 */
 	@After
 	public void tearDown() throws Exception
 	{
@@ -52,7 +58,6 @@ public class HttpRequestsTest {
 	{
 		try {
 			HttpRequests.main(url, sizeOfPool, logOption);
-			Thread.sleep(21600000);//six hours
 		} catch (Throwable t) {
 			t.printStackTrace();
 			fail("Error when try call main method: " + t.getMessage());
