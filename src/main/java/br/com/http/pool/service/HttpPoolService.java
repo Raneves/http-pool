@@ -40,7 +40,7 @@ public class HttpPoolService extends Thread {
 
 	private static Logger LOG = Logger.getLogger(HttpPoolService.class.getName());
 	
-	public static final int MAX_CONNECTIONS = 2000;
+	public static final int MAX_CONNECTIONS = 4000;
 	private static final int MAX_HEADER_COUNT = 200;
 	private static final int MAX_LINE_LENGTH = 2000;
 	/**
