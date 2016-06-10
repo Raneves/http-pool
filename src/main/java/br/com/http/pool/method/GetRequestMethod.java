@@ -51,7 +51,8 @@ public class GetRequestMethod extends Request {
 			String responseLine = response.getStatusLine().toString(); 
 			onSuccess(responseLine);
 			EntityUtils.consume(response.getEntity());
-			successValitation(responseLine);
+			removeNotFoundProxy(responseLine);
+			//successValitation(responseLine);
 		} catch (Exception ex) 
 		{
 			this.httpRequestBase.abort();

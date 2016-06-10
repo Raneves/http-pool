@@ -59,6 +59,22 @@ public abstract class Request extends Thread {
 	}
 
 	/**
+	 * remove connection refused
+	 * @param ex
+	 * Jun 1, 2016
+	 * @author rjesus
+	 */
+	protected void removeNotFoundProxy(String response)
+	{
+		if (response != null && response.contains("404")) {
+			HttpHost proxy = (HttpHost) httpRequestBase.getConfig().getProxy();
+			if (ProxyManager.getListProxy().contains(proxy)) {
+				ProxyManager.getListProxy().remove(proxy);
+			}
+		}
+	}
+	
+	/**
 	 * remove connection timeout
 	 * @param ex
 	 * Jun 1, 2016

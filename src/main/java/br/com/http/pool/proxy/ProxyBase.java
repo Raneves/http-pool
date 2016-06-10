@@ -90,13 +90,19 @@ public abstract class ProxyBase {
 	 */
 	protected List<HttpHost> loadSimpleTXTFormat(Document doc)
 	{
-		String[] elements;
-		elements = doc.text().split(" ");
-		for (String element : elements) 
+		String[] lines;
+		lines = doc.text().split(" ");
+		for (String line : lines) 
 		{
-			String ip = element.split(":")[0];
-			int port = Integer.parseInt(element.split(":")[1]);
-			addProxy(ip, port);
+			try
+			{
+				String ip = line.split(":")[0];
+				int port = Integer.parseInt(line.split(":")[1]);
+				addProxy(ip, port);
+			}catch(ArrayIndexOutOfBoundsException e)
+			{
+				LOG.log(Level.SEVERE, "File contains unexpected characters on line: " + line);
+			}
 		}
 		return proxies;
 	}

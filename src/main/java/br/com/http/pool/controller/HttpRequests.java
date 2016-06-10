@@ -23,17 +23,12 @@ public class HttpRequests {
 	public static void main(String... parameters)
 	{
 		
-		//only for travis
-		LogManager.getLogManager().reset();
-		Logger globalLogger = Logger.getLogger(java.util.logging.Logger.GLOBAL_LOGGER_NAME);
-		globalLogger.setLevel(java.util.logging.Level.OFF);
-		//-- end --//
 		validateParameters(parameters);
 		LOG.log(Level.INFO, "requested url: " + parameters[0]);
 		String url = parameters[0];
 		int numberOfRequests = Integer.parseInt(parameters[1]);
 		boolean logOption = new Boolean(parameters[2]);
-		
+		enableLog(logOption);
 		HttpPoolService service = new HttpPoolService(url, numberOfRequests, logOption);
 		PoolingHttpClientConnectionManager connectionManager = service.getConnectionManager(); 
 		ProxyReloader proxyReloader = new ProxyReloader();
@@ -44,6 +39,16 @@ public class HttpRequests {
 		proxyReloader.start();
 		
 		LOG.log(Level.INFO, "Starting HTTP-POOL");
+	}
+
+	private static void enableLog(boolean enableLog)
+	{
+		if(!enableLog)
+		{
+			LogManager.getLogManager().reset();
+			Logger globalLogger = Logger.getLogger(java.util.logging.Logger.GLOBAL_LOGGER_NAME);
+			globalLogger.setLevel(java.util.logging.Level.OFF);
+		}
 	}
 
 	/**

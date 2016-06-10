@@ -8,7 +8,9 @@ import java.util.Set;
 
 import org.apache.http.HttpHost;
 
+import br.com.http.pool.proxy.impl.DailyProxy;
 import br.com.http.pool.proxy.impl.HideMyAss;
+import br.com.http.pool.proxy.impl.MultiProxy;
 
 /**
  *
@@ -47,11 +49,9 @@ public final class ProxyManager {
 	private static Set<HttpHost> intializeProxies()
 	{
 		Set<HttpHost> proxies = new HashSet<HttpHost>();
-		/*
-		 * proxies.addAll(new FreeProxyCH().load()); proxies.addAll(new HideMyAss().load()); proxies.addAll(new MultiProxy().load()); proxies.addAll(new TubeIncreaser().load());
-		 */
-		//proxies.addAll(new TubeIncreaser().load());
-		//proxies.addAll(new MultiProxy().load()); 
+		
+		proxies.addAll(new DailyProxy().load());
+		proxies.addAll(new MultiProxy().load()); 
 		//proxies.addAll(new FreeProxyCH().load());
 		proxies.addAll(new HideMyAss().load());
 		tempListIterable = new ArrayList<HttpHost>();
