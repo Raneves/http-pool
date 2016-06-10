@@ -29,7 +29,7 @@ public class HideMyAss extends ProxyBase implements IProxy {
 	
 	private static Logger LOG = Logger.getLogger(HideMyAss.class.getName());
 
-	private final String HIDE_MY = "http://hidemyass.com/proxy-list/";
+	private final String HIDE_MY = "http://proxylist.hidemyass.com/";
 	private final String CSS_DISPLAY_STYLE = "{display:none}";
 
 	public List<HttpHost> load()
