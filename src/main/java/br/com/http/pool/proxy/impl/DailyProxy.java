@@ -48,11 +48,9 @@ public class DailyProxy extends ProxyBase implements IProxy {
 		
 		return proxies;
 	}
-	
-	@Override
-	public List<HttpHost> load()
-	{
+
+	public List<HttpHost> load() {
 		return loadTXT();
 	}
-
+	
 }
