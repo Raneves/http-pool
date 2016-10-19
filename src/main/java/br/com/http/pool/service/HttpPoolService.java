@@ -68,7 +68,6 @@ public class HttpPoolService extends Thread {
 	
 	/**
 	 * @param url
-	 * @param sizeOfPool
 	 * @param logOption
 	 * May 31, 2016
 	 * @author rjesus
@@ -189,7 +188,7 @@ public class HttpPoolService extends Thread {
 	}
 	
 	/**
-	 * example from here https://hc.apache.org/httpcomponents-client-ga/httpclient/examples/org/apache/http/examples/client/ClientConfiguration.java
+	 * Example from here https://hc.apache.org/httpcomponents-client-ga/httpclient/examples/org/apache/http/examples/client/ClientConfiguration.java
 	 * @return
 	 * May 31, 2016
 	 * @author rjesus
@@ -211,7 +210,7 @@ public class HttpPoolService extends Thread {
 	}
 
 	/**
-	 * sleeping and log exception
+	 * Sleeping and log exception
 	 * @param time
 	 * May 31, 2016
 	 * @author rjesus
@@ -224,13 +223,12 @@ public class HttpPoolService extends Thread {
 		}
 		catch (InterruptedException e) 
 		{
-			e.printStackTrace();
-			LOG.log(Level.SEVERE, "\n\n\n\n\n\n\n\n\n\nSleeping Critical Error: " + e.getMessage() + "\n\n\n\n\n\n\n\n\n\n");
+			LOG.log(Level.SEVERE, "\n\n\n\n\n\n\n\n\n\nSleeping Critical Error: " + e.getMessage() + "\n\n\n\n\n\n\n\n\n\n", e);
 		}
 	}
 	
 	/**
-	 * calls connectionManager->shutdown() method and builds a new instance of cm and httpClient
+	 * Calls connectionManager->shutdown() method and builds a new instance of cm and httpClient
 	 * May 31, 2016
 	 * @author rjesus
 	 */
@@ -263,15 +261,14 @@ public class HttpPoolService extends Thread {
 			}
 			catch (OutOfMemoryError m) 
 			{
-				LOG.log(Level.SEVERE, "\n\n\n\n\n\n\n\n\n\nMemory Critical Error: " + m.getMessage() + "\n\n\n\n\n\n\n\n\n\n");
+				LOG.log(Level.SEVERE, "\n\n\n\n\n\n\n\n\n\nMemory Critical Error: " + m.getMessage() + "\n\n\n\n\n\n\n\n\n\n", m);
 				sleep(TIME_SLEEP_EXCEPTION);
 				renewManager();
 
 			}
 			catch (Throwable t) 
 			{
-				LOG.log(Level.SEVERE, "\n\n\n\n\n\n\n\n\n\nCritical Error!\n");
-				t.printStackTrace();
+				LOG.log(Level.SEVERE, "\n\n\n\n\n\n\n\n\n\nCritical Error!\n", t);
 				sleep(TIME_SLEEP_EXCEPTION);
 				renewManager();
 			}

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.com.http.pool.method;
 
 import java.util.ArrayList;
@@ -27,7 +24,6 @@ public class PostRequestMethod extends Request {
 	/**
 	 * @param url
 	 * @param httpClient
-	 * @param defaultRequestCofing
 	 * @param logOption
 	 * Jun 1, 2016
 	 * @author rjesus

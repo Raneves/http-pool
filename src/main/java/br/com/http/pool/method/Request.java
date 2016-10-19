@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.com.http.pool.method;
 
 import org.apache.http.HttpHost;
@@ -51,7 +48,7 @@ public abstract class Request extends Thread {
 	protected void removeBadProxy(Exception ex)
 	{
 		if (ex.getMessage() != null && ex.getMessage().contains("refused")) {
-			HttpHost proxy = (HttpHost) httpRequestBase.getConfig().getProxy();
+			HttpHost proxy = httpRequestBase.getConfig().getProxy();
 			if (ProxyManager.getListProxy().contains(proxy)) {
 				ProxyManager.getListProxy().remove(proxy);
 			}
@@ -59,15 +56,15 @@ public abstract class Request extends Thread {
 	}
 
 	/**
-	 * remove connection refused
-	 * @param ex
+	 * Remove 404 http response
+	 * @param response
 	 * Jun 1, 2016
 	 * @author rjesus
 	 */
 	protected void removeNotFoundProxy(String response)
 	{
 		if (response != null && response.contains("404")) {
-			HttpHost proxy = (HttpHost) httpRequestBase.getConfig().getProxy();
+			HttpHost proxy = httpRequestBase.getConfig().getProxy();
 			if (ProxyManager.getListProxy().contains(proxy)) {
 				ProxyManager.getListProxy().remove(proxy);
 			}
@@ -84,7 +81,7 @@ public abstract class Request extends Thread {
 	{
 		if (ex.getMessage() != null && ex.getMessage().contains("timed out")) 
 		{
-			HttpHost proxy = (HttpHost) httpRequestBase.getConfig().getProxy();
+			HttpHost proxy = httpRequestBase.getConfig().getProxy();
 			if (ProxyManager.getListProxy().contains(proxy))
 			{
 				ProxyManager.getListProxy().remove(proxy);
@@ -114,9 +111,9 @@ public abstract class Request extends Thread {
 	 */
 	protected void successValitation(String response)
 	{
-		if (response != null && response.contains("Forbidden") || response.contains("Forbidden") || response.contains("403"))
+		if (response != null && response.contains("Forbidden") || response.contains("403"))
 		{
-			HttpHost proxy = (HttpHost) httpRequestBase.getConfig().getProxy();
+			HttpHost proxy = httpRequestBase.getConfig().getProxy();
 			if (ProxyManager.getListProxy().contains(proxy)) {
 				ProxyManager.getListProxy().remove(proxy);
 			}

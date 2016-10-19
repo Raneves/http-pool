@@ -1,6 +1,3 @@
-/**
- * 
- */
 package br.com.http.pool.method;
 
 import java.util.logging.Level;
@@ -29,7 +26,6 @@ public class GetRequestMethod extends Request {
 	/**
 	 * @param url
 	 * @param httpClient
-	 * @param defaultRequestCofing
 	 * @param logOption
 	 * Jun 1, 2016
 	 * @author rjesus

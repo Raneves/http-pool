@@ -46,8 +46,8 @@ public class HttpRequests {
 		if(!enableLog)
 		{
 			LogManager.getLogManager().reset();
-			Logger globalLogger = Logger.getLogger(java.util.logging.Logger.GLOBAL_LOGGER_NAME);
-			globalLogger.setLevel(java.util.logging.Level.OFF);
+			Logger globalLogger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+			globalLogger.setLevel(Level.OFF);
 		}
 	}
 
