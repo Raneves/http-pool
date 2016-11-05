@@ -103,6 +103,17 @@ public class HttpRequestsTest {
 	 * @author rjesus
 	 */
 	@Test(expected = RuntimeException.class)
+	public void testWithoutLogOption()
+	{
+		HttpRequests.main(url, sizeOfPool);
+	}
+	
+	/**
+	 *
+	 * May 30, 2016
+	 * @author rjesus
+	 */
+	@Test(expected = RuntimeException.class)
 	public void testWithInvalidMain()
 	{
 		HttpRequests.main();

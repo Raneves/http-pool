@@ -63,7 +63,7 @@ public class HttpRequests {
 		String regexOfURL = "\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]";
 		String regexOfNumberOfRequests = "[0-9]+";
 		
-		if(parameters == null || parameters.length == 0)
+		if(parameters == null || parameters.length != 3)
 		{
 			msg = "Three parameters are required: [{URL}] [{NUMBER_OF_REQUESTS}] [{LOG_OPTION}]";
 			LOG.log(Level.SEVERE, msg);
