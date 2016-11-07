@@ -18,16 +18,20 @@ public class ProxyReloader extends Thread {
 	
 	private static Logger LOG = Logger.getLogger(ProxyReloader.class.getName());
 	
-	private final int TIME_RELOAD = 120000;//2 minutes
+	private final int TIME_RELOAD = 240000;//4 minutes
 	
 	public void run() 
 	{
 		while(true)
 		{
-			sleep(TIME_RELOAD);
-			setListProxy(reload());
-			//LOG.log(Level.INFO, "\n\n\n\n\n\n\nProxys Updated: "+ getListProxy().size() +"\n\n\n\n\n\n\n\n");
-			System.out.println("\n\n\n\n\n\n\nProxys Updated: "+ getListProxy().size() +"\n\n\n\n\n\n\n\n");
+			try {
+				sleep(TIME_RELOAD);
+				setListProxy(reload());
+				//LOG.log(Level.INFO, "\n\n\n\n\n\n\nProxies Updateds: "+ getListProxy().size() +"\n\n\n\n\n\n\n\n");
+				System.out.println("\n\n\n\n\n\n\nProxies Updateds: "+ getListProxy().size() +"\n\n\n\n\n\n\n\n");
+			}catch(Throwable e) {
+				LOG.log(Level.SEVERE, "\nCritical error on ProxyReloader: " + e.getMessage(), e);
+			}
 		}
 	}
 	
@@ -45,8 +49,7 @@ public class ProxyReloader extends Thread {
 		}
 		catch (InterruptedException e) 
 		{
-			e.printStackTrace();
-			LOG.log(Level.SEVERE, "\n\n\n\n\n\n\n\n\n\nSleeping Critical Error: " + e.getMessage() + "\n\n\n\n\n\n\n\n\n\n");
+			LOG.log(Level.SEVERE, "\n\n\n\n\n\n\n\n\n\nSleeping Critical Error: " + e.getMessage() + "\n\n\n\n\n\n\n\n\n\n", e);
 		}
 	}
 

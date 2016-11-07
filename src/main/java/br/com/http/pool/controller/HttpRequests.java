@@ -38,7 +38,7 @@ public class HttpRequests {
 		monitor.start();
 		proxyReloader.start();
 		
-		LOG.log(Level.INFO, "Starting HTTP-POOL");
+		LOG.log(Level.INFO, "\n\n\n\n*******Starting HTTP-POOL*******\n\n\n\n");
 	}
 
 	private static void enableLog(boolean enableLog)
