@@ -1,6 +1,6 @@
 ###### <center>HTTP-POOL PROJECT</center>
 ---
-This project is destination to users that needing test multiple requests with multiple devices in the Http-server layer.
+Project destinated to users who need test multiple requests with multiple devices using the http protocol.
 
 
 
